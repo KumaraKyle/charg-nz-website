@@ -1,7 +1,7 @@
 document.documentElement.classList.remove("no-js");
 
-// Pay-as-you-go rates (NZD). Keep in sync with the other pricing cards in index.html.
-const PRICING = { firstHour: 3, perExtraHour: 2, dailyCap: 10 };
+// Rates (NZD), as shown on the station screen.
+const PRICING = { perHour: 5, maxPerRental: 15, notReturned: 30 };
 
 // Placeholder stations: replace with your real venues (or load from an API).
 // Each station holds 8 powerbanks, so available + free slots = 8.
@@ -81,7 +81,7 @@ if (!reduceMotion) {
 
 // How it works: steps drive the station illustration and auto-advance
 const STEP_COPY = {
-  1: { msg: "Tap card or phone to rent", reader: "tap", cap: "Step 01 / Rent" },
+  1: { msg: "Insert or tap your card to rent", reader: "tap", cap: "Step 01 / Rent" },
   2: { msg: "Slot 4 unlocked. Take your powerbank", reader: "paid", cap: "Step 02 / Charge" },
   3: { msg: "Returned. Thanks! Rental stopped", reader: "done", cap: "Step 03 / Go further" },
 };
@@ -124,21 +124,21 @@ showStep(1);
 autoplay();
 
 // Pricing labels and cost estimator
-$("p-first").textContent = money(PRICING.firstHour);
-$("p-hourly").textContent = money(PRICING.perExtraHour);
-$("p-cap").textContent = money(PRICING.dailyCap);
+$("p-hourly").textContent = money(PRICING.perHour);
+$("p-cap").textContent = money(PRICING.maxPerRental);
+$("p-lost").textContent = money(PRICING.notReturned);
 
 const hours = $("hours");
 function updateCost() {
   const h = Number(hours.value);
-  const raw = PRICING.firstHour + (h - 1) * PRICING.perExtraHour;
-  const cost = Math.min(raw, PRICING.dailyCap);
-  const capped = raw >= PRICING.dailyCap;
+  const raw = h * PRICING.perHour;
+  const cost = Math.min(raw, PRICING.maxPerRental);
+  const capped = raw >= PRICING.maxPerRental;
   $("hours-out").textContent = h === 1 ? "1 hour" : `${h} hours`;
   $("cost-out").textContent = money(cost);
-  $("cap-fill").style.width = (cost / PRICING.dailyCap) * 100 + "%";
+  $("cap-fill").style.width = (cost / PRICING.maxPerRental) * 100 + "%";
   $("cap").classList.toggle("is-capped", capped);
-  $("cap-note").textContent = capped ? "Daily cap reached. Keep it all day." : `${money(PRICING.dailyCap - cost)} below the daily cap`;
+  $("cap-note").textContent = capped ? `${money(PRICING.maxPerRental)} cap reached. Return within 24 hours.` : `${money(PRICING.maxPerRental - cost)} below the ${money(PRICING.maxPerRental)} cap`;
   hours.style.setProperty("--p", ((h - 1) / 23) * 100 + "%");
 }
 hours.addEventListener("input", updateCost);

@@ -88,7 +88,7 @@
           <li>
             <button class="step is-active" data-step="1" aria-pressed="true">
               <span class="step__n">01</span>
-              <span class="step__body"><strong>Rent</strong><span>Tap your card, phone or watch on the reader. No app, no sign-up.</span></span>
+              <span class="step__body"><strong>Rent</strong><span>Insert or tap a debit or credit card, or use Apple Pay or Google Pay. No app, no sign-up.</span></span>
               <span class="step__bar"><i></i></span>
             </button>
           </li>
@@ -114,7 +114,7 @@
           <div class="unit__reader"><span class="unit__reader-screen" id="reader-screen">tap</span><span class="unit__keys"></span></div>
           <div class="unit__screen">
             <span class="unit__brand">Charg-<em>nz</em></span>
-            <span class="unit__msg" id="unit-msg">Tap card or phone to rent</span>
+            <span class="unit__msg" id="unit-msg">Insert or tap your card to rent</span>
           </div>
           <div class="unit__band"></div>
           <div class="unit__slots">
@@ -140,7 +140,7 @@
         <p class="red__lead">Each station sits on a bar, a café counter or a reception desk and keeps eight powerbanks charged and ready. Pay on the reader, follow the screen, and you're away.</p>
         <dl class="spec">
           <div><dt>Slots</dt><dd>08</dd></div>
-          <div><dt>Payment</dt><dd>Contactless card, phone or watch</dd></div>
+          <div><dt>Payment</dt><dd>Debit or credit card · Apple Pay · Google Pay</dd></div>
           <div><dt>Cables</dt><dd>USB-C · Lightning · Micro-USB</dd></div>
           <div><dt>Screen</dt><dd>Touchscreen that shows what's available</dd></div>
           <div><dt>Returns</dt><dd>Any Charg-nz station</dd></div>
@@ -155,38 +155,26 @@
       <div class="head-row">
         <div>
           <p class="label">Pricing</p>
-          <h2 class="display">Pay for the power<br>you use.</h2>
+          <h2 class="display">Five bucks an hour.<br>Fifteen, tops.</h2>
         </div>
-        <p class="muted head-row__note">All prices NZD, GST inclusive.</p>
+        <p class="muted head-row__note">Prices in NZD, as shown on every station.</p>
       </div>
 
       <div class="plans">
-        <article class="plan">
-          <p class="label">Pay as you go</p>
-          <p class="plan__price"><span id="p-first">$3</span><small>first hour</small></p>
-          <ul>
-            <li>Then <span id="p-hourly">$2</span> each extra hour</li>
-            <li>Never more than <span id="p-cap">$10</span> a day</li>
-            <li>No sign-up, just tap</li>
-          </ul>
-        </article>
         <article class="plan plan--hot">
-          <p class="label">Day pass <span class="tag">Popular</span></p>
-          <p class="plan__price">$8<small>24 hours</small></p>
-          <ul>
-            <li>Unlimited swaps for 24 hours</li>
-            <li>Swap a low unit for a full one</li>
-            <li>Built for festivals and long days</li>
-          </ul>
+          <p class="label">Rental rate</p>
+          <p class="plan__price"><span id="p-hourly">$5</span><small>per hour</small></p>
+          <p class="plan__note">Charged by the hour from the moment the powerbank leaves the station.</p>
         </article>
         <article class="plan">
-          <p class="label">Monthly</p>
-          <p class="plan__price">$15<small>a month</small></p>
-          <ul>
-            <li>First 2 hours free on every rental</li>
-            <li>Unlimited rentals</li>
-            <li>Cancel any time</li>
-          </ul>
+          <p class="label">Most you'll pay</p>
+          <p class="plan__price"><span id="p-cap">$15</span><small>per rental</small></p>
+          <p class="plan__note">Keep it as long as you need. After three hours the price stops going up.</p>
+        </article>
+        <article class="plan">
+          <p class="label">Not returned</p>
+          <p class="plan__price"><span id="p-lost">$30</span><small>after 24 hours</small></p>
+          <p class="plan__note">If it isn't back in a station within 24 hours, a one-off $30 charge applies.</p>
         </article>
       </div>
 
@@ -198,12 +186,12 @@
           <div class="calc__ticks label" aria-hidden="true"><span>1h</span><span>6h</span><span>12h</span><span>18h</span><span>24h</span></div>
         </div>
         <div class="calc__a">
-          <p class="calc__total" id="cost-out">$5</p>
+          <p class="calc__total" id="cost-out">$10</p>
           <div class="cap" id="cap" aria-hidden="true"><span class="cap__fill" id="cap-fill"></span></div>
-          <p class="label" id="cap-note">$5 below the daily cap</p>
+          <p class="label" id="cap-note">$5 below the $15 cap</p>
         </div>
       </div>
-      <p class="fine">Not back within 72 hours? It's yours to keep, with a one-off $45 purchase fee.</p>
+      <p class="fine">Pay by inserting or tapping a debit or credit card, or with Apple Pay or Google Pay.</p>
     </div>
   </section>
 
@@ -256,7 +244,6 @@
         <div class="field"><label for="f-topic">About</label>
           <select id="f-topic" name="topic">
             <option>Hosting a station at my venue</option>
-            <option>Monthly plan waitlist</option>
             <option>Events and festivals</option>
             <option>Something else</option>
           </select>
@@ -282,7 +269,7 @@
         </details>
         <details>
           <summary>Do I need an app?</summary>
-          <p>No. Every station has a contactless card reader. Tap your card, phone or watch, follow the screen, and a slot unlocks.</p>
+          <p>No. Every station has a card reader. Insert or tap a debit or credit card, or pay with Apple Pay or Google Pay, and a slot unlocks.</p>
         </details>
         <details>
           <summary>Can I return it somewhere else?</summary>
@@ -294,7 +281,7 @@
         </details>
         <details>
           <summary>What if I lose it?</summary>
-          <p>If a powerbank isn't returned within 72 hours it's yours to keep, and a one-off purchase fee is charged. No more rental fees apply.</p>
+          <p>If a powerbank isn't returned within 24 hours, a one-off NZ$30 charge applies instead of further rental fees.</p>
         </details>
       </div>
     </div>
